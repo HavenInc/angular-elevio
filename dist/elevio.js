@@ -59,10 +59,9 @@
     };
     this.$get = [
       "$window", "ElevioService", "ElevioSettings", function($window, ElevioService, ElevioSettings) {
-        var _disabled, _options, _user, elevioObj, invoke;
+        var _options, _user, elevioObj, invoke;
         _options = {};
         _user = {};
-        _disabled = [];
         elevioObj = false;
         angular.extend(_options, ElevioSettings);
         invoke = function() {
@@ -84,10 +83,13 @@
             });
           },
           setDisabled: function(disabled) {
-            if (disabled == null) {
-              disabled = _disabled;
-            }
             return $window._elev.disabledModules = disabled;
+          },
+          enableModules: function(modules) {
+            return $window._elev.enableModules(modules);
+          },
+          disableModules: function(modules) {
+            return $window._elev.disableModules(modules);
           },
           setUser: function(user) {
             if (user == null) {

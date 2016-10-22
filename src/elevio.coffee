@@ -58,7 +58,6 @@
       ($window, ElevioService, ElevioSettings) ->
         _options  = {}
         _user     = {}
-        _disabled = []
 
         elevioObj = false
         angular.extend _options, ElevioSettings
@@ -78,8 +77,13 @@
             elevioObj = elevio
 
         setDisabled: (disabled) ->
-          disabled ?= _disabled
           $window._elev.disabledModules = disabled
+
+        enableModules: (modules) ->
+          $window._elev.enableModules(modules)
+
+        disableModules: (modules) ->
+          $window._elev.disableModules(modules)
 
         setUser: (user) ->
           user ?= _user
